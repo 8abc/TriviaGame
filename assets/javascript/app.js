@@ -21,7 +21,7 @@ $(document).ready(function() {
         "2017-2018",
         "2018- 2019"
       ],
-      answer: "2015- 2016"
+      answer: 2
     },
     {
       question: "What city will they play in at 2020?",
@@ -32,7 +32,7 @@ $(document).ready(function() {
         "Treasure Island",
         "Berkely"
       ],
-      answer: "San Francisco"
+      answer: 0
     },
     {
       question: "What are their colors?",
@@ -43,7 +43,7 @@ $(document).ready(function() {
         "Blue & Yellow",
         "Blue & Pink"
       ],
-      answer: "Blue & Yellow"
+      answer: 3
     },
     {
       question: "Who is their coach?",
@@ -54,29 +54,29 @@ $(document).ready(function() {
         "Kobe Bryant",
         "Steve Kerr"
       ],
-      answer: "Steve Kerr"
+      answer: 4
     },
     {
       question: "The Warriors have the best regular season record of 73-9.",
       choice: ["True", "False"],
-      answer: "True"
+      answer: 0
     },
     {
       question: "The team moved to the West in 1969",
       choice: ["True", "False"],
-      answer: "False"
+      answer: 1
     },
     {
       question: "Did they make the playoffs in 2018- 2019?",
       choice: ["Yup, you know it", "No way"],
-      answer: "Yup, you know it"
+      answer: 0
     }
   ];
 
   var correctCount = 0;
   var wrongCount = 0;
   var unanswerCount = 0;
-  var timer = 30;
+  var timer = 20;
   var intervalId;
   var userGuess = "";
   var running = false;
@@ -89,6 +89,7 @@ $(document).ready(function() {
   $("#reset").hide();
   //click start button to start game
   $("#start").on("click", function() {
+    //hide start button
     $("#start").hide();
     displayQuestion();
     runTimer();
@@ -112,10 +113,10 @@ $(document).ready(function() {
     if (timer === 0) {
       unanswerCount++;
       stop();
-      $("#answerblock").html(
-        "<p>The correct answer is: " + pick.choice[pick.answer] + "</p>"
-      );
-      hidepicture();
+      // $("#answerblock").html(
+      //   "<p>The correct answer is: " + pick.choice[pick.answer] + "</p>"
+      // );
+      // hidepicture();
     }
   }
 
@@ -164,20 +165,16 @@ $(document).ready(function() {
         stop();
         wrongCount++;
         userGuess = "";
-        $("#answerblock").html(
-          "<p>Wrong! The correct answer is: " +
-            pick.choice[pick.answer] +
-            "</p>"
-        );
+        $("#answerblock").html("Incorrect!");
         hidepicture();
       }
     });
   }
 
   function hidepicture() {
-    $("#answerblock").append("<img src=" + pick.photo + ">");
-    newArray.push(pick);
-    options.splice(index, 1);
+    // $("#answerblock").append("<img src=" + pick.photo + ">");
+    // newArray.push(pick);
+    // options.splice(index, 1);
 
     var hidpic = setTimeout(function() {
       $("#answerblock").empty();
@@ -212,3 +209,5 @@ $(document).ready(function() {
     displayQuestion();
   });
 });
+// 169 The correct answer is: " +
+// pick.choice[pick.answer] +
