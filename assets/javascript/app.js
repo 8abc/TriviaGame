@@ -113,10 +113,6 @@ $(document).ready(function() {
     if (timer === 0) {
       unanswerCount++;
       stop();
-      // $("#answerblock").html(
-      //   "<p>The correct answer is: " + pick.choice[pick.answer] + "</p>"
-      // );
-      // hidepicture();
     }
   }
 
@@ -132,12 +128,6 @@ $(document).ready(function() {
     index = Math.floor(Math.random() * options.length);
     pick = options[index];
 
-    //	if (pick.shown) {
-    //		//recursive to continue to generate new index until one is chosen that has not shown in this game yet
-    //		displayQuestion();
-    //	} else {
-    //		console.log(pick.question);
-    //iterate through answer array and display
     $("#questionblock").html("<h2>" + pick.question + "</h2>");
     for (var i = 0; i < pick.choice.length; i++) {
       var userChoice = $("<div>");
@@ -209,5 +199,3 @@ $(document).ready(function() {
     displayQuestion();
   });
 });
-// 169 The correct answer is: " +
-// pick.choice[pick.answer] +
