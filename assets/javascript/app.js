@@ -91,11 +91,11 @@ $(document).ready(function() {
   $("#start").on("click", function() {
     //hide start button
     $("#start").hide();
-    displayQuestion();
-    runTimer();
+
     for (var i = 0; i < options.length; i++) {
       holder.push(options[i]);
     }
+    displayQuestion();
   });
   //timer start
   function runTimer() {
@@ -124,9 +124,12 @@ $(document).ready(function() {
   //randomly pick question in array if not already shown
   //display question and loop though and display possible answers
   function displayQuestion() {
+    console.log(holder);
     //generate random index in array
-    index = Math.floor(Math.random() * options.length);
-    pick = options[index];
+    index = Math.floor(Math.random() * holder.length);
+    pick = holder[index];
+    //removing the what pick is equal to from the holder array and remove from list so it's not picked again
+    holder.splice(index, 1);
 
     $("#questionblock").html("<h2>" + pick.question + "</h2>");
     for (var i = 0; i < pick.choice.length; i++) {
@@ -159,6 +162,7 @@ $(document).ready(function() {
         hidepicture();
       }
     });
+    runTimer();
   }
 
   function hidepicture() {
@@ -192,10 +196,9 @@ $(document).ready(function() {
     $("#reset").hide();
     $("#answerblock").empty();
     $("#questionblock").empty();
-    for (var i = 0; i < holder.length; i++) {
-      options.push(holder[i]);
+    for (var i = 0; i < options.length; i++) {
+      holder.push(options[i]);
     }
-    runTimer();
     displayQuestion();
   });
 });
